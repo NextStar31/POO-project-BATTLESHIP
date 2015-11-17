@@ -2,8 +2,8 @@ package fr.enseirb.battleship.ship;
 
 public class Destroyer extends Ship {
 
-	public Destroyer() {
-		// TODO Auto-generated constructor stub
-	}
+	private String name;
+	private int length=2;
+
 
 }

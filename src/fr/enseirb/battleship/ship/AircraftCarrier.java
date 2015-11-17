@@ -2,8 +2,7 @@ package fr.enseirb.battleship.ship;
 
 public class AircraftCarrier extends Ship {
 
-	public AircraftCarrier() {
-		// TODO Auto-generated constructor stub
-	}
-
+private String name;
+private int length=5;
+	
 }

@@ -19,35 +19,12 @@ public class Grid {
 	private int numberDestroyers;
 	private int numberPatrolboards;
 	private int numberAircraftcarriers;
-	
-
-	static org.jdom2.Document document;
-	static Element racine;
 	   
-	   public static void main(String[] args)
-	   {
-	 
-	     SAXBuilder sxb = new SAXBuilder();
-	  
-	     try
-		     {
-	         document = sxb.build(new File("test.xml"));
-		     }
-	      catch (Exception e){}
-
-	      racine = document.getRootElement();
-	      
-	      Grid test = new Grid();
-	      
-	      try{
-	      test.extract() ;
-	      }
-	      catch (InvalidGridException e){}
-	      
-	      test.affiche();
-	   }
-
-	void affiche(){
+	public Grid (){
+		
+	}
+	
+	public void affiche(){
 	    System.out.println("dimX:"+dimX); 
 	    System.out.println("dimY:"+dimY);
 	    System.out.println("numberBattleships:"+numberBattleships);
@@ -57,7 +34,7 @@ public class Grid {
 	    System.out.println("numberAircraftcarriers:"+numberAircraftcarriers);
 	}
 
-	void extract () throws InvalidGridException{
+	public void extract (Element racine) throws InvalidGridException{
 			   
 		List list = racine.getChildren("dimensions");
 		List ship = racine.getChildren("ships");
@@ -84,10 +61,10 @@ public class Grid {
 		Iterator j = ship.iterator();
 		while(j.hasNext()){
 			Element courant = (Element)j.next();
-			if(Integer.parseInt(courant.getChild("battleship").getText())<0 |  
-				Integer.parseInt(courant.getChild("submarine").getText())<0 | 
-				Integer.parseInt(courant.getChild("destroyer").getText())<0 |
-				Integer.parseInt(courant.getChild("patrol-boat").getText())<0 |
+			if(Integer.parseInt(courant.getChild("battleship").getText())<0 ||  
+				Integer.parseInt(courant.getChild("submarine").getText())<0 || 
+				Integer.parseInt(courant.getChild("destroyer").getText())<0 ||
+				Integer.parseInt(courant.getChild("patrol-boat").getText())<0 ||
 				Integer.parseInt(courant.getChild("aircraft-carrier").getText())<0) //on vérifie que aucun nombre n'est négatif
 			{
 				throw new InvalidGridException(2);
@@ -101,5 +78,15 @@ public class Grid {
 			}
 		}
 	}
+	
+	public int GetDimX(){
+		return dimX;
+
+	}
+	public int GetDimY(){
+		return dimY;
+
+	}
+
 
 }

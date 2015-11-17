@@ -11,28 +11,21 @@ import javax.swing.JPanel;
 public class Interface extends JFrame {
 
 
-    public Interface(){                
+    public Interface(Grid test){                
 
       this.setTitle("Ma première fenêtre Java");
 
-      this.setSize(800, 800);
+      this.setSize(800, 820);
 
       this.setLocationRelativeTo(null);               
 
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-      this.setContentPane(new Panneau());
-
+      this.setContentPane(new Panneau(test));
 
       this.setVisible(true);
 
     }  
   
-public static void main(String[] args){
-
-    	    Interface fenetre = new Interface();
-    	                
-    	  }       
-
               
 }
